@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spotify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="flex">
+    <div class="container flex">
+        <div class="left-box flex justify-center">
+            <div class="home gray-background">
+                <img src="img/close.svg" alt="close">
+                <div class="home-box flex">
+                    <img src="img/logo.svg" alt="logo" class="logo invert">
+                    <a class="flex" href="/">
+                        <img src="img/home.svg" alt="home" class="invert">
+                        <span>
+                            Home
+                        </span>
+                    </a>
+                    <a class="flex" href="/">
+                        <img src="img/search.svg" alt="search" class="invert">
+                        <span>
+                            Search
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="library flex align-center gray-background">
+                <div class="library-head flex align-center">
+                    <img src="img/playlist.svg" alt="library" class="invert">
+                    <span>
+                        your library
+                    </span>
+                </div>
+                <ul class="library-content flex ">
+                </ul>
+                <div class="library-footer flex align-center">
+                    <a href="/">Legal</a>
+                    <a href="/">Privacy Center</a>
+                    <a href="/">Privacy Policy</a>
+                    <a href="/">Cookies</a>
+                    <a href="/">About Ads</a>
+                    <a href="/">Accessibility</a>
+                    <a href="/"> cookies</a>
+                </div>
+            </div>
+        </div>
+        <div class="right-box gray-background">
+            <div class="bar flex align-center">
+                <div class="bar-box1 flex align-center">
+                    <img src="img/hamburger.svg" alt="hamburger-icon">
+                    <span>&lt;</span>
+                    <span>&gt;</span>
+                </div>
+                <div class="bar-box2 flex  align-center">
+                    <button>sign up</button>
+                    <button>log in</button>
+                </div>
+            </div>
+            <div class="playlist-head flex">
+                <h2>spotify playlists</h2>
+            </div>
+            <div class="playlist-section">
+                <div class="playlists flex">
+
+                </div>
+            </div>
+            <div class="audio-bar flex align-center">
+                <div class="play-bar flex align-center">
+                    <div class="flex align-center">
+                        <div class="song-name flex">
+
+                        </div>
+                        <img src="img/un-shuffle.svg" alt="shuffle" id="shuffle">
+                    </div>
+                    <div class="play-buttons flex justify-center align-center">
+                        <img src="img/prevsong.svg" alt="" class="invert">
+                        <img src="img/play.svg" alt="playsong" class="invert">
+                        <img src="img/nextsong.svg" alt="nextsong" class="invert">
+                    </div>
+
+                    <div class="volume flex align-center ">
+                        <div class="duration">
+                            0:0/0:0
+                        </div>
+                        <div class="volume-scroll flex justify-center align-center">
+                            <img src="img/unmute.svg" alt="mute">
+                            <input id="volume-slider" type="range" min="0" max="100" value="80">
+                            </input>
+                        </div>
+                    </div>
+                </div>
+                <div class="seek-bar">
+                    <div id="circle">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
