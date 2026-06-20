@@ -1,108 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>spotify</title>
+    <title>Moodify — Music Player</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Inline Lucide Icons using SVG -->
+    <svg style="display: none;">
+        <defs>
+            <g id="icon-home"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></g>
+            <g id="icon-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></g>
+            <g id="icon-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></g>
+            <g id="icon-play"><polygon points="6 3 20 12 6 21 6 3"/></g>
+            <g id="icon-pause"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></g>
+            <g id="icon-skip-forward"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></g>
+            <g id="icon-skip-back"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></g>
+            <g id="icon-volume-2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></g>
+            <g id="icon-volume-x"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></g>
+            <g id="icon-repeat"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></g>
+            <g id="icon-repeat-1"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/><path d="M11 10h1v4"/></g>
+            <g id="icon-shuffle"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l4.1-5.8a7.3 7.3 0 0 1 6-3.5H22"/><path d="m18 2 4 5-4 5"/><path d="M2 6h1.9c1.5 0 2.8.8 3.6 2l3.5 5.1a7.2 7.2 0 0 0 6 3.9H22"/><path d="m18 12 4 5-4 5"/></g>
+            <g id="icon-sliders"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></g>
+            <g id="icon-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></g>
+            <g id="icon-x"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></g>
+            <g id="icon-arrow-left"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></g>
+        </defs>
+    </svg>
 </head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><use href="#icon-play"/></svg>
+            </div>
+            
+            <div class="nav-item active" data-view="home" title="Home">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-home"/></svg>
+            </div>
+            <div class="nav-item" data-view="search" title="Search">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-search"/></svg>
+            </div>
+            <div class="nav-item" data-view="favorites" title="Favorites">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-heart"/></svg>
+            </div>
+        </nav>
 
-<body class="flex">
-    <div class="container flex">
-        <div class="left-box flex justify-center">
-            <div class="home gray-background">
-                <img src="img/close.svg" alt="close">
-                <div class="home-box flex">
-                    <img src="img/logo.svg" alt="logo" class="logo invert">
-                    <a class="flex" href="/">
-                        <img src="img/home.svg" alt="home" class="invert">
-                        <span>
-                            Home
-                        </span>
-                    </a>
-                    <a class="flex" href="/">
-                        <img src="img/search.svg" alt="search" class="invert">
-                        <span>
-                            Search
-                        </span>
-                    </a>
+        <!-- Main Content Area -->
+        <main id="main-content">
+            <!-- Top Bar with Search -->
+            <div class="top-bar">
+                <div class="search-container" id="search-container" style="display: none;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-search"/></svg>
+                    <input type="text" id="search-input" class="search-input" placeholder="Search for songs or albums...">
                 </div>
             </div>
-            <div class="library flex align-center gray-background">
-                <div class="library-head flex align-center">
-                    <img src="img/playlist.svg" alt="library" class="invert">
-                    <span>
-                        your library
-                    </span>
+
+            <!-- Home View: Album Grid -->
+            <section id="home-view" class="view active">
+                <div class="view-header">
+                    <h1 class="view-title">Good Evening</h1>
+                    <p class="view-subtitle">Select a mood to start listening</p>
                 </div>
-                <ul class="library-content flex ">
-                </ul>
-                <div class="library-footer flex align-center">
-                    <a href="/">Legal</a>
-                    <a href="/">Privacy Center</a>
-                    <a href="/">Privacy Policy</a>
-                    <a href="/">Cookies</a>
-                    <a href="/">About Ads</a>
-                    <a href="/">Accessibility</a>
-                    <a href="/"> cookies</a>
+                <div class="album-grid" id="album-grid">
+                    <!-- Album cards injected here via JS -->
+                </div>
+            </section>
+
+            <!-- Album Detail View: Song List -->
+            <section id="album-view" class="view">
+                <button class="back-btn" id="back-to-home">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-arrow-left"/></svg>
+                    Back to Home
+                </button>
+                
+                <div class="album-header-large" id="album-header">
+                    <img src="" alt="Album Cover" class="album-cover-large" id="album-large-cover">
+                    <div class="album-info">
+                        <p class="view-subtitle" id="album-large-type">Playlist</p>
+                        <h1 id="album-large-title">Album Title</h1>
+                        <p class="view-subtitle" id="album-large-desc">Description goes here</p>
+                        <button class="play-all-btn" id="play-album-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-play"/></svg>
+                            Play All
+                        </button>
+                    </div>
+                </div>
+
+                <div class="song-list" id="album-song-list">
+                    <!-- Song rows injected here via JS -->
+                </div>
+            </section>
+
+            <!-- Favorites View -->
+            <section id="favorites-view" class="view">
+                <div class="view-header">
+                    <h1 class="view-title">Your Favorites</h1>
+                    <p class="view-subtitle" id="fav-count">0 songs</p>
+                </div>
+                <div class="song-list" id="favorites-list">
+                    <!-- Favorite songs injected here -->
+                </div>
+            </section>
+
+            <!-- Search View -->
+            <section id="search-view" class="view">
+                <div class="view-header">
+                    <h1 class="view-title">Search Results</h1>
+                    <p class="view-subtitle" id="search-stats">Type to start searching</p>
+                </div>
+                
+                <h3 style="margin: 24px 0 16px; font-weight: 600;">Albums</h3>
+                <div class="album-grid" id="search-albums-grid"></div>
+                
+                <h3 style="margin: 32px 0 16px; font-weight: 600;">Songs</h3>
+                <div class="song-list" id="search-songs-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Fixed Bottom Player Bar -->
+    <footer id="player-bar">
+        <div class="progress-bar-wrapper">
+            <input type="range" id="seek-bar" min="0" max="100" value="0">
+            <div class="progress-bg"></div>
+            <div class="progress-fill" id="seek-fill"></div>
+        </div>
+
+        <div class="player-left">
+            <div class="player-thumb-wrapper" id="player-expand-btn">
+                <img src="" alt="Cover" class="player-thumb" id="player-thumb" style="display: none;">
+                <svg class="expand-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#icon-maximize"/></svg>
+            </div>
+            <div class="player-info">
+                <div class="player-song-name" id="player-song-name">Not Playing</div>
+                <div class="player-artist" id="player-artist">-</div>
+            </div>
+            <button class="fav-btn" id="player-fav-btn" style="display: none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#icon-heart"/></svg>
+            </button>
+        </div>
+
+        <div class="player-center">
+            <div class="player-controls">
+                <button class="control-btn" id="shuffle-btn" title="Shuffle (S)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#icon-shuffle"/></svg>
+                </button>
+                <button class="control-btn" id="prev-btn" title="Previous (P)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#icon-skip-back"/></svg>
+                </button>
+                <button class="control-btn play-pause-btn" id="play-btn" title="Play/Pause (Space)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" id="play-icon"><use href="#icon-play"/></svg>
+                </button>
+                <button class="control-btn" id="next-btn" title="Next (N)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#icon-skip-forward"/></svg>
+                </button>
+                <button class="control-btn" id="repeat-btn" title="Repeat (R)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#icon-repeat"/></svg>
+                </button>
+            </div>
+            <div class="progress-container">
+                <span id="time-current">0:00</span>
+                <span id="time-total">0:00</span>
+            </div>
+        </div>
+
+        <div class="player-right">
+            <button class="control-btn" id="eq-toggle-btn" title="Equalizer">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#icon-sliders"/></svg>
+            </button>
+            <div class="volume-container">
+                <button class="control-btn" id="mute-btn" title="Mute (M)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="vol-icon"><use href="#icon-volume-2"/></svg>
+                </button>
+                <div class="volume-wrapper">
+                    <input type="range" id="volume-slider" min="0" max="100" value="80">
+                    <div class="progress-bg"></div>
+                    <div class="progress-fill" id="volume-fill" style="width: 80%"></div>
                 </div>
             </div>
         </div>
-        <div class="right-box gray-background">
-            <div class="bar flex align-center">
-                <div class="bar-box1 flex align-center">
-                    <img src="img/hamburger.svg" alt="hamburger-icon">
-                    <span>&lt;</span>
-                    <span>&gt;</span>
-                </div>
-                <div class="bar-box2 flex  align-center">
-                    <button>sign up</button>
-                    <button>log in</button>
-                </div>
-            </div>
-            <div class="playlist-head flex">
-                <h2>spotify playlists</h2>
-            </div>
-            <div class="playlist-section">
-                <div class="playlists flex">
+        
+        <!-- Mobile extra controls -->
+        <div class="mobile-controls" style="display: none;">
+            <button class="control-btn play-pause-btn" id="mobile-play-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" id="mobile-play-icon"><use href="#icon-play"/></svg>
+            </button>
+        </div>
+    </footer>
 
+    <!-- Now Playing Overlay -->
+    <div id="now-playing-overlay">
+        <div class="overlay-bg" id="overlay-bg"></div>
+        <button class="overlay-close" id="close-overlay-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#icon-x"/></svg>
+        </button>
+        
+        <div class="overlay-content">
+            <img src="" alt="Cover" class="overlay-art" id="overlay-art">
+            <div class="overlay-info">
+                <h1 class="overlay-title" id="overlay-title">Song Title</h1>
+                <p class="overlay-artist" id="overlay-artist">Artist</p>
+                
+                <div style="height: 100px; display: flex; align-items: flex-end; gap: 4px; margin-bottom: 32px;" id="visualizer-container">
+                    <!-- CSS Visualizer bars injected here via JS -->
                 </div>
-            </div>
-            <div class="audio-bar flex align-center">
-                <div class="play-bar flex align-center">
-                    <div class="flex align-center">
-                        <div class="song-name flex">
-
-                        </div>
-                        <img src="img/un-shuffle.svg" alt="shuffle" id="shuffle">
-                    </div>
-                    <div class="play-buttons flex justify-center align-center">
-                        <img src="img/prevsong.svg" alt="" class="invert">
-                        <img src="img/play.svg" alt="playsong" class="invert">
-                        <img src="img/nextsong.svg" alt="nextsong" class="invert">
-                    </div>
-
-                    <div class="volume flex align-center ">
-                        <div class="duration">
-                            0:0/0:0
-                        </div>
-                        <div class="volume-scroll flex justify-center align-center">
-                            <img src="img/unmute.svg" alt="mute">
-                            <input id="volume-slider" type="range" min="0" max="100" value="80">
-                            </input>
-                        </div>
-                    </div>
-                </div>
-                <div class="seek-bar">
-                    <div id="circle">
-
-                    </div>
+                
+                <h3 style="font-size: 16px; color: rgba(255,255,255,0.5); margin-bottom: 16px;">Up Next</h3>
+                <div class="song-list" id="up-next-list" style="max-height: 200px; overflow-y: auto;">
+                    <!-- Next songs injected here -->
                 </div>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
-</body>
 
+    <!-- Equalizer Modal -->
+    <div id="eq-modal">
+        <div class="eq-content">
+            <div class="eq-header">
+                <h2>Equalizer</h2>
+                <button class="control-btn" id="close-eq-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#icon-x"/></svg>
+                </button>
+            </div>
+            <div class="eq-presets" id="eq-presets">
+                <button class="eq-preset-btn active" data-preset="flat">Flat</button>
+                <button class="eq-preset-btn" data-preset="bass">Bass Boost</button>
+                <button class="eq-preset-btn" data-preset="treble">Treble Boost</button>
+                <button class="eq-preset-btn" data-preset="vocal">Vocal Focus</button>
+                <button class="eq-preset-btn" data-preset="rock">Rock</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
 </html>
